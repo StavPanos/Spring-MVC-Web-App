@@ -1,13 +1,25 @@
-<%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 
 <div class="container">
-	<font color="red">${errorMessage}</font>
-	<form method="post">
-		Name : <input type="text" name="name" /> Password : <input
-			type="password" name="password" /> <input type="submit"
-			name="submit" />
-	</form>
+	<form:form method="post" modelAttribute="toDo">
+		<form:hidden path="id" />
+		<fieldset class="form-group">
+			<form:label path="desc">Description</form:label>
+			<form:input path="desc" type="text" class="form-control"
+				required="required" />
+			<form:errors path="desc" cssClass="text-warning" />
+		</fieldset>
+
+		<fieldset class="form-group">
+			<form:label path="targetDate">Target Date</form:label>
+			<form:input path="targetDate" type="text" class="form-control"
+				required="required" />
+			<form:errors path="targetDate" cssClass="text-warning" />
+		</fieldset>
+
+		<button type="submit" class="btn btn-success">Add</button>
+	</form:form>
 </div>
 
-<%@ include file="common/footer.jspf"%>
+<%@ include file="common/footer.jspf" %>
